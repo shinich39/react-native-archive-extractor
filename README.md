@@ -1,29 +1,29 @@
-## RNArchiveExtractor
+## react-native-archive-extractor
 
-Extract archive, pdf in react native.
+.
 
 ## Installation
 
+- /ios/Podfile
+
 ```swift
-// /react-native/ios/Podfile
 ...
-target '<ReactNativeApplication>' do {
-    ...
-    # fix error "the following Swift pods cannot yet be integrated as static libraries"
-    pod "UnrarKit", :modular_headers => true
-    ...
-}
+target '<ReactNativeApplication>' do 
+    config = use_native_modules!
+
+    pod "UnrarKit", :modular_headers => true # add
+end
 ```
 
 ```console
 cd ios && pod install
 ```
 
-```js
-import RNAE from 'rn-archive-extractor';
-```
-
 ## Usage
+
+```js
+import RNAE from 'react-native-archive-extractor';
+```
 
 ```js
 const srcPath = "./archive.zip"; // archive path
@@ -47,6 +47,42 @@ await RNAE.extractSevenZipWithPassword(srcPath, dstPath, password); // return un
 // pdf
 await RNAE.isProtectedPdf(srcPath); // return boolean
 await RNAE.extractPdf(srcPath, dstPath); // return undefined
+```
+
+- with libs
+
+```console
+npm install react-native-fs react-native-document-picker react-native-uuid
+```
+
+```js
+import DocumentPicker from 'react-native-document-picker';
+import RNFS from "react-native-fs";
+import RNAE from 'react-native-archive-extractor';
+import uuid from 'react-native-uuid';
+
+async function getFilesFromZip() {
+  const { fileCopyUri } = await DocumentPicker.pickSingle({
+    copyTo: "cachesDirectory" // required
+  });
+  
+  if (!fileCopyUri) {
+    throw new Error("An error was occurred.");
+  }
+
+  const srcPath = decodeURIComponent(fileCopyUri.replace(/^file\:\/\//, ""));
+  const dstPath = RNFS.TemporaryDirectoryPath + "/" + uuid.v4();
+
+  // create temporary directory
+  await RNFS.mkdir(dstPath);
+
+  // extract
+  await RNAE.extractZip(srcPath, dstPath);
+
+  const files = await RNFS.readDir(dstPath);
+
+  return files;
+}
 ```
 
 ## Credits

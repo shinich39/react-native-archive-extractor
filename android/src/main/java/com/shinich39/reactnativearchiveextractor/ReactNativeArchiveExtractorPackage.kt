@@ -1,4 +1,4 @@
-package com.shinich39.rnarchiveextractor;
+package com.shinich39.reactnativearchiveextractor;
 
 import android.view.View
 import com.facebook.react.ReactPackage
@@ -15,6 +15,6 @@ class RNArchiveExtractorPackage : ReactPackage {
 
   override fun createNativeModules(
     reactContext: ReactApplicationContext
-  ): MutableList<NativeModule> = listOf(RNArchiveExtractorModule(reactContext)).toMutableList()
+  ): MutableList<NativeModule> = listOf(ReactNativeArchiveExtractorModule(reactContext)).toMutableList()
 
 }

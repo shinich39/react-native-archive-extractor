@@ -1,4 +1,4 @@
-package com.shinich39.rnarchiveextractor;
+package com.shinich39.reactnativearchiveextractor;
 
 import com.facebook.react.bridge.NativeModule
 import com.facebook.react.bridge.ReactApplicationContext
@@ -26,9 +26,9 @@ import android.graphics.pdf.PdfRenderer
 import android.graphics.pdf.PdfRenderer.Page
 import android.os.ParcelFileDescriptor
 
-class RNArchiveExtractorModule(reactContext: ReactApplicationContext) : ReactContextBaseJavaModule(reactContext) {
+class ReactNativeArchiveExtractorModule(reactContext: ReactApplicationContext) : ReactContextBaseJavaModule(reactContext) {
 
-  override fun getName() = "RNArchiveExtractor"
+  override fun getName() = "ReactNativeArchiveExtractor"
 
   // @ReactMethod(isBlockingSynchronousMethod = true)
 
@@ -166,17 +166,17 @@ class RNArchiveExtractorModule(reactContext: ReactApplicationContext) : ReactCon
       val pageCount = renderer.getPageCount();
       // check dupe
       for (i in 0 until pageCount) {
-        val path = dstPath + "/" + String.valueOf(i) + ".jpg";
+        val path = dstPath + "/" + i.toString() + ".jpg";
         val file = File(path);
         if (file.exists()) {
           throw Exception("File already exists");
         }
       }
       // extract
-      var fos: FileOutputStream = null;
+      var fos: FileOutputStream? = null;
       try {
         for (i in 0 until pageCount) {
-          val path = dstPath + "/" + String.valueOf(i) + ".jpg";
+          val path = dstPath + "/" + i.toString() + ".jpg";
           val page = renderer.openPage(i);
           val pageWidth = page.getWidth();
           val pageHeight = page.getHeight();

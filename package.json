@@ -1,5 +1,5 @@
 {
-  "name": "rn-archive-extractor",
+  "name": "react-native-archive-extractor",
   "version": "1.0.0",
   "description": "Archive extrator in react native.",
   "main": "index.js",
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/shinich39/RNArchiveExtractor.git"
+    "url": "git+https://github.com/shinich39/react-native-archive-extractor.git"
   },
   "keywords": [
     "react-native"
@@ -17,7 +17,7 @@
   "author": "shinich39 <shinich39@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/shinich39/RNArchiveExtractor/issues"
+    "url": "https://github.com/shinich39/react-native-archive-extractor/issues"
   },
-  "homepage": "https://github.com/shinich39/RNArchiveExtractor#readme"
+  "homepage": "https://github.com/shinich39/react-native-archive-extractor#readme"
 }

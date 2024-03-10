@@ -42,8 +42,5 @@ dependencies {
     implementation "com.facebook.react:react-native:+"
     implementation "net.lingala.zip4j:zip4j:2.+"
     implementation "com.github.junrar:junrar:7.+"
-
-    // https://github.com/hzy3774/AndroidP7zip
-    // implementation "com.hzy:libp7zip:1.7.0"
-    implementation files("libs/libp7zip-1.7.1.aar")
+    implementation files("libs/libp7zip-1.7.1.aar") // https://github.com/hzy3774/AndroidP7zip
 }
